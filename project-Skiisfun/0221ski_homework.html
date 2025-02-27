@@ -13,15 +13,22 @@
             <h1 class="header-title">滑雪趣
                 <span class="header-subtitle">Skiisfun</span>
             </h1>
-            <nav class="header-navbar">
-                <ul class="navbar-list">
-                    <li class="navbar-item"><a href="#schedule" class="navbar-link">行程介紹</a></li>
-                    <li class="navbar-item"><a href="#pricing" class="navbar-link">梯次與價格</a></li>
-                    <li class="navbar-item"><a href="#coach" class="navbar-link">教練介紹</a></li>
-                    <li class="navbar-item"><a href="#accommodation" class="navbar-link">住宿設施</a></li>
-                    <li class="navbar-item"><a href="#q-and-a" class="navbar-link">Q&A</a></li>
-                </ul>
-            </nav>
+            <div class="desktop-menu">
+                <nav class="header-navbar">
+                    <ul class="navbar-list">
+                        <li class="navbar-item"><a href="#schedule" class="navbar-link">行程介紹</a></li>
+                        <li class="navbar-item"><a href="#pricing" class="navbar-link">梯次與價格</a></li>
+                        <li class="navbar-item"><a href="#coach" class="navbar-link">教練介紹</a></li>
+                        <li class="navbar-item"><a href="#accommodation" class="navbar-link">住宿設施</a></li>
+                        <li class="navbar-item"><a href="#q-and-a" class="navbar-link">常見問題</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="mobile-menu">
+                <img src="menu.png" width="30" height="30" alt="選單漢堡圖">
+            </div>
+
         </header>
         <div class="story">
         <div class="story-content">
@@ -78,9 +85,6 @@
                 <ul class="card-description">
                     <li class="card-item">自由練習</li>
                 </ul>
-                <div class="card__image-practice--container">
-                <img class="practiceday" src="https://media.istockphoto.com/id/1284614641/zh/%E5%90%91%E9%87%8F/%E7%B4%A2%E9%81%93%E5%B9%B3%E7%B7%9A%E5%9C%96%E7%A4%BA%E5%B1%B1%E5%89%8D%E7%BA%9C%E8%BB%8A%E7%AC%A6%E8%99%9F%E7%9A%84%E5%90%91%E9%87%8F%E5%9C%96.jpg?s=2048x2048&w=is&k=20&c=T0r2pqcAtLA5HSAREtIHYSL4PpFj1GZ_av7SfWPMHSM=" alt="上下纜車滑雪練習">
-                </div>
             </div>
             <div class="card card-highlighted">
                 <h3 class="card-title">DAY 5</h3>
@@ -128,7 +132,7 @@
         <h2 id="coach" class="coaches-title" >教練介紹</h2>
             <div class="coaches-list">
                 <div class="coach-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoMtnOok5n7KjfD56_WpF1Uk4IzOQ5sI4MS45CAEwgP5SbKqJTa848gSsWscWt1I58Cq4&usqp=CAU" alt="Avatar教練 CoCo，專長單板與雙板滑雪，擁有8年教學經驗" class="coach-card-image">  
+                <img src="COCO.jpg" alt="Avatar教練 CoCo，專長單板與雙板滑雪，擁有8年教學經驗" class="coach-card-image">  
                 <p class="coach-card-name">CoCo</p>
 
                 <!--要做成hover效果，點照片下方才會滑出卡片-->
@@ -144,7 +148,7 @@
 
             <div class="coaches-list">
                 <div class="coach-card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm9XM9U90QRlNUx3jvlalcWFz9kDPVPA4izQ&s" alt="Avatar教練 BoB，10年滑雪教學經驗，適合親子與初學者" class="coach-card-image">
+                <img src="BOB.jpg" alt="Avatar教練 BoB，10年滑雪教學經驗，適合親子與初學者" class="coach-card-image">
                 <p class="coach-card-name">BoB</p>
 
                 <!--要做成hover效果，點照片下方才會滑出卡片-->
@@ -160,18 +164,29 @@
 
         <h2 id="hotel" class="hotel-title">住宿設施</h2>
         <!--暫定為圖片切換動畫?!-->
-        <img src="https://media.vogue.com.tw/photos/6733366969286c2d016e9bd4/master/w_1600,c_limit/(%E5%9C%967)%E3%80%8C%E6%96%B0%E5%AF%8C%E8%89%AF%E9%87%8E%E7%8E%8B%E5%AD%90%E9%A3%AF%E5%BA%97%E3%80%8D%E6%88%BF%E5%85%A7%E5%A4%A7%E7%89%87%E6%99%AF%E8%A7%80%E7%AA%97%EF%BC%8C%E8%83%BD%E8%BC%95%E9%AC%86%E6%8B%8D%E6%94%9D%E6%97%A5%E6%9C%AC%E7%9F%A5%E5%90%8D%E6%B4%BB%E7%81%AB%E5%B1%B1%E5%8D%81%E5%8B%9D%E5%B2%B3(%E5%9C%96%E7%89%87%E4%BE%86%E6%BA%90%EF%BC%9AShin%20Furano%20Prince%20Hotel%20%E5%AE%98%E7%B6%B2).jpg" alt="富良野度假村雙人房，大片景觀窗，窗外就是夢幻雪景" class="hotle-image">
-        <img src="https://tw.wamazing.com/media/wp-content/uploads/sites/4/2023/12/snowlandscapeonsenryokan_pixta_36123934_M.jpg.webp" alt="經典雪景露天風呂，泡湯賞雪極致享受。" class="hotle-image">
-        <img src="https://www.visit-hokkaido.jp/lsc/upfile/articleDetail/0000/1053/1053_3_m.jpg" alt="日式料理" class="hotle-image">
-        <img src="https://tw.wamazing.com/media/wp-content/uploads/sites/4/2019/08/noboribetsuonsen-gourmet_43696610_M.jpg.webp" alt="日式料理" class="hotle-image">
+        <img src="雪景房.webp" alt="富良野度假村雙人房，大片景觀窗，窗外就是夢幻雪景" class="hotle-image">
+        <img src="露天風呂.jpg.webp" alt="經典雪景露天風呂，泡湯賞雪極致享受。" class="hotle-image">
+        <img src="日式料理1.jpg" alt="日式料理" class="hotle-image">
+        <img src="消夜拉麵.jpg.webp" alt="日式料理" class="hotle-image">
         
-        <h2 id="q-and-a" class="q-and-a-title">Q&A</h2>
-        <!--暫定風琴/開合樣式-->
-        <p>01.雪具自備可以扣團費嗎？</p>
-        <p>02.可以不滑雪，只陪同家人一起去嗎？</p>
-        <p>03.衣服要穿多厚？</p>
-        <p>04.單人也可以報名嗎？需要加費用嗎？</p>
-        <p>05.請問雪票有含夜滑嗎？</p>
+        <h2 id="questions" class="questions-title">常見問題</h2>
+                   <!--暫定風琴/開合樣式-->
+                <p class="question">01.雪具自備可以扣團費嗎？</p>
+                <p class="answer">滑雪板、雪鞋都自備可退3000日幣，單項雪板/雪鞋退1500元（在日本退）。</p>
+                <p class="question">02.可以不滑雪，只陪同家人一起去嗎？</p>
+                <p class="answer">可以！全程不滑雪可折抵1萬元，雪場附近沒有甚麼可以逛街的地方喔，建議就一起在雪場玩雪吧～（雪場有自費的香蕉船、雪上摩托車可以玩）</p>
+                <p class="question">03.衣服要穿多厚？</p>
+                <p class="answer">雪衣裡面建議穿一到兩件即可，建議穿透氣排汗衣服。</p>
+                <p class="question">04.小朋友（6歲以下）不含床，報名費可以扣多少？</p>
+                <p class="answer">無法抵扣報名費，飯店是按人頭計費準備餐食的。</p>
+                <p class="question">05.單人也可以報名嗎？需要加費用嗎？</p>
+                <p class="answer">單人報名不用另外加價喔，只是房間是二人房也可能是三人房，快來和我們一起滑雪認識朋友吧！如指定單人房，每晚加收1500元台幣。</p>
+                <p class="question">06.課程適合哪些水平的滑雪者？</p>
+                <p class="answer">我們的課程適合從初學者到高級滑雪者的不同水平。課程會根據滑雪者的經驗和技能進行分級，以確保每個學員都能在適合自己的水平上得到專業的指導和訓練。</p>
+                <p class="question">07.請問保險包含嗎？</p>
+                <p class="answer">包含全程定制保險費用，確保學員的安全無憂。</p>
+                <p class="question">08.有什麼房型呢？</p>
+                <p class="answer">酒店提供多種房型，親子家庭根據人數不同安排相應房型。有傳統的日式榻榻米房間，體驗純正的和式風情，也有日西合璧的混搭房型，享受雙重舒適。</p>
 
 
         <footer class="footer">

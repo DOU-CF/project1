@@ -1,4 +1,4 @@
-.header {
+header {
     display: flex;
     align-items: center;
     padding: 10px 20px;
@@ -10,7 +10,7 @@
     font-size: 48px; 
     font-weight: bold;
     text-align:center;
-    margin:0;
+    margin: 20px;
     color: #87ceeb;
     line-height: 1.2;
 }
@@ -21,18 +21,59 @@
     color: gray;
     display: block;
     margin-top: 5px;
+    line-height: 1.0;
 }
 
 .header-navbar {
     display: flex;
-    flex-grow: 1;
+    flex-direction: row;/* 預設為水平方向排列 */
+    width: 100%; /* 確保佔滿整個父容器寬度 */
+    justify-content: center;
 }
 
+/* 預設桌譏平板選單顯示 */
+.desktop-menu {
+    display: block;
+    text-align: center;
+}
+
+/* 預設手機選單隱藏 */
+.mobile-menu {
+    display: none;
+    text-align: center;
+}
+
+/* 響應式：當螢幕寬度小於768px時，顯示手機選單 */
+@media (max-width: 768px) {
+    /* 隱藏桌面選單 */
+    .desktop-menu {
+        display: none;
+    }
+    
+    /* 顯示手機選單 */
+    .mobile-menu {
+        display: block;
+    }
+
+    .header-navbar {
+        flex-direction: column; /* 手機上改為垂直排列 */
+    }
+    
+    .navbar-item {
+        font-size: 24px;/* 手機上字型調整 */
+    }
+
+    .navbar-link {
+        padding: 15px;
+    }
+}    
+
+/* 預設導覽列樣式*/
 .navbar-list {
     display: flex;
-    justify-content: space-around;
-    margin: 0;
-    padding: 0;
+    justify-content: center; /*找不出原因--為什麼導覽列置中跑掉了?!*/
+    margin: 20px;
+    padding: 0px;
     list-style: none;
 }
 
@@ -44,6 +85,7 @@
     color: white;
     text-decoration: none;
     padding: 10px;
+
 }
 
 .story{
@@ -59,6 +101,14 @@
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    .story-headline {
+        font-size: 24px;/* 手機上字型調整 */
+    }
+    .story-list {
+        font-size: 18px;
+    }
+}
 .story-list {
     font-size: 24px;
     font-weight: bold;
@@ -87,7 +137,7 @@
 }
 
 .card {
-    background-color: #white;
+    background-color: white;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 10px 5px 5px #CECEFF;
@@ -108,8 +158,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
     min-height: 300px;
     box-sizing: border-box; 
 }
@@ -120,7 +168,6 @@
 
 .card-highlighted{
     border: 2px solid 	#4A4AFF;
- 
 }
 
 
@@ -132,6 +179,7 @@
     overflow: hidden;
 }
 
+/* Pricing section */
 .pricing {background-image: url('https://d2r4787i3zn8dn.cloudfront.net/site_images/images/033c62ab3ef144f2089dcffa3ad76488bbbc6eed.jpg?1572426758');
     background-size: cover;
     padding: 20px;
@@ -190,11 +238,14 @@
     margin-bottom: 20px;
 }
 
+/*大視窗時  卡片水平排列失敗*/
 .coaches-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f4;
 }
 
 .coach-card {
@@ -205,6 +256,18 @@
     text-align: center;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1280px) {
+    .coach-card {
+        width: 45%; /* 調整卡片寬度適應小螢幕 */
+    }
+}
+
+@media (max-width: 500px) {
+    .coach-card {
+        width: 90%; /* 調整卡片寬度適應小螢幕 */
+    }
 }
 
 .coach-card-image {
@@ -229,7 +292,7 @@
     margin-bottom: 10px;
 }
 
-/*卡片水平排列失敗*/
+
 .card__image-container img {
         width: 100%;
         height: 100%;        
@@ -247,8 +310,12 @@
     margin-bottom: 20px;
 }
 
-
-
+/*Q&A section*/
+.questions-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
 
 /* Footer */
 .footer {
