@@ -317,6 +317,15 @@ header {
     margin-bottom: 20px;
 }
 
+.question {
+    font-size: 18px;
+}
+
+.answer {
+    font-size: 18px;
+}
+
+
 /* Footer */
 .footer {
     background-color:#1D2A44;
