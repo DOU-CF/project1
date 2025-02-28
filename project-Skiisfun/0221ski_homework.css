@@ -92,7 +92,8 @@ header {
     background-image: url('https://pic1.zhimg.com/v2-1c0a6eadc663832aae33e2c2bf21f7e4_1440w.jpg?source=172ae18b');
     background-size: cover;
     padding: 20px;
-    opacity:0.6;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+    
 }
 
 .story-headline {
@@ -184,6 +185,7 @@ header {
     background-size: cover;
     padding: 20px;
     opacity:0.8;
+    
 }
 
 .pricing-title {
@@ -198,6 +200,9 @@ header {
     border-collapse: collapse;
     margin: 0 auto;
     background-color: white;
+    border: 5px solid #4A4AFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
 }
 
 .pricing-header{
@@ -206,6 +211,7 @@ header {
     text-align: center;
     padding: 10px;
     border: 3px solid #4A4AFF;
+
 }
 
 .pricing-data {
@@ -311,6 +317,13 @@ header {
 }
 
 /*Q&A section*/
+.questions {
+    background-color: #f4f4f4;; /* 淺灰色背景 */
+    padding: 20px; /* 內邊距增加 */
+    border-radius: 8px; /* 邊角圓滑 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 添加陰影 */
+}
+
 .questions-title {
     text-align: center;
     font-size: 32px;
