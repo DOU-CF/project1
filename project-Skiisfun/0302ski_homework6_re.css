@@ -1,0 +1,510 @@
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1A2B43;
+    font-family: SourceHanSans, sans-serif;
+}
+
+.header-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align:center;
+    margin: 20px;
+    color: #87ceeb;
+    line-height: 1.2;
+}
+
+.header-subtitle {
+    font-size: 24px;
+    font-style: italic;
+    color: gray;
+    display: block;
+    margin-top: 5px;
+    line-height: 1.0;
+}
+
+/* 隱藏checkbox */
+#menu-toggle {
+    display: none;
+}
+
+/* 預設桌機平板選單顯示 */
+.desktop-menu {
+    display: block;
+    text-align: center;
+}
+/* Navbar Styles */
+.header-navbar {
+    display: flex;
+    flex-direction: row;/* 預設為水平方向排列 */
+    width: 100%; /* 確保佔滿整個父容器寬度 */
+    justify-content: center;
+}
+
+/* 預設導覽列樣式*/
+.navbar-list {
+    display: flex;
+    justify-content: center; 
+    margin: 20px;
+    padding: 0px;
+    list-style: none;
+    top: 60px;  /* 偏移位置，避免與標題重疊 */
+    z-index: 999;  /* 增加 z-index */
+    position: absolute;  /* 確保選單層級高於其他內容 */
+    left: 0;
+    right: 0;
+
+}
+
+.navbar-item {
+    font-size: 28px;
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.navbar-link:hover {
+    background-color: rgba(82, 90, 211, 0.8);  /* 滑鼠懸停時的背景顏色 */
+}
+
+/* 漢堡選單圖示:預設隱藏 */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1000;  /* 增加 z-index ,確保漢堡選單在故事區塊上方 */
+}
+
+.hamburger-menu .line {
+    display: none;
+    width: 30px;
+    height: 4px;
+    margin: 6px auto;/* 讓三條線之間有間隔 */
+    background-color: #4A4AFF;
+    border-radius: 5px;
+    transition: all 0.3s ease; /* 添加過渡效果 */
+    }
+
+/* 手機螢幕寬度 <=768px */
+@media screen and (max-width: 768px) {
+    /*隱藏桌機版導覽列*/
+    
+    .navbar-list {
+        display: none;
+        position: fixed;
+        top: 56px; /*header 下方*/
+        right: 0; /*和 header的右邊對齊*/
+        left: 0;
+        height: 200px;
+        background-color: rgba(82, 90, 211, 0.9);
+        padding: 10px;
+        flex-direction: column;
+        gap: 10px;
+        transition: all 0.3s ease; /* 加入過渡效果 */
+        z-index: 999; /* 確保在故事區塊上方 */
+    
+    }
+    
+    .nav-active {
+        display: flex;
+        justify-content: center; 
+        margin: 20px;
+        padding: 0px;
+        list-style: none;
+        z-index: 999;  /* 增加 z-index */
+        position: absolute;  /* 確保選單層級高於其他內容 */
+        top: 60px;  /* 偏移位置，避免與標題重疊 */
+        left: 0;
+        right: 0;
+    }
+    
+     /*顯示漢堡選單圖示*/
+    .hamburger-menu {
+            display: block; /*讓每個漢堡選單項目垂直排列*/
+            
+    }
+    
+    .navbar-list .active {
+            display: block; /* 顯示導航菜單 */
+    }
+
+    .hamburger-menu .line {
+        display: block;
+        width: 30px;
+        height: 4px;
+        background-color: #4A4AFF;
+        margin: 6px auto;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /*當checkbox 被勾選，顯示導覽列*/
+    /* 當 checkbox 被勾選時，讓三條線變成 X */
+    #menu-toggle:checked ~ .hamburger-menu .line:nth-child(1) {
+         transform: rotate(45deg);/* 第一條線變成對角線 */
+         position: relative;
+          top: 7px;
+    }
+
+    #menu-toggle:checked ~ .hamburger-menu .line:nth-child(2) {
+         opacity: 0;  /* 隱藏中間那條線 */
+    }
+
+    #menu-toggle:checked ~ .hamburger-menu .line:nth-child(3) {
+        transform: rotate(-45deg);/* 第三條線變成對角線 */
+        position: relative;
+        top: -7px;
+    }
+
+/* 手機螢幕下，當漢堡圖示被點擊後，顯示導航選單 */
+    #menu-toggle:checked ~ .header-navbar .navbar-list {
+        display: flex;/* 顯示導航選單 */
+        flex-direction: column;/* 垂直排列選項 */
+        background-color: rgba(82, 90, 211, 0.9);
+        gap: 10px;
+        padding: 10px;
+        z-index: 1000; /* 確保在最上層 */
+    }
+
+
+    #menu-toggle:checked~ .hamburger-menu + .header-navbar .navbar-list {
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(82, 90, 211, 0.9);
+        gap: 10px;
+        padding: 10px;
+    }    
+
+    .navbar-link {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        background-color: #4A90E2;
+        border-radius: 5PX;
+    }
+
+    .navbar-link:hover {
+        background-color: gray
+    }
+}
+
+
+.story{
+    background-image: url('https://pic1.zhimg.com/v2-1c0a6eadc663832aae33e2c2bf21f7e4_1440w.jpg?source=172ae18b');
+    background-size: cover;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+    position: relative; /* 確保偽元素能夠正定位 */
+    color: white; /* 讓文字顏色更醒目 */ 
+    z-index: 1; /* 確保故事區塊位於下層 */
+}
+.story::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1; /* 確保遮罩層位於背景之上 */
+}
+
+/* 文字樣式 */
+.story-headline {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2; /* 確保文字顯示在遮罩層之上 */
+    position: relative; /* 確保文字層級在遮罩層上方 */
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .header-title {
+        font-size: 30px;
+    }
+
+    .story-headline {
+        /*平板字型調整 */
+        font-size: 28px;
+        font-weight: lighter;
+    }
+    .story-item {
+        font-size: 20px;
+        font-weight: lighter;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .story-headline {
+        /* 手機上字型調整 */
+        font-size: 20px;
+
+    }
+    .story-item {
+        font-size: 18px;
+        font-weight:lighter;
+        line-height: 1.5;
+    }
+}
+
+.story-list {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.8;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+    z-index: 2; /* 確保文字顯示在遮罩層之上 */
+    position: relative; /* 確保文字層級在遮罩層上方 */
+}
+
+.story-item{
+    margin-bottom: 10px;
+}
+
+main {
+    background-color: #bfecff;
+    padding: 20px;
+}
+.main-section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 10px 5px 5px #CECEFF;
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 24px;
+    color: #333;
+}
+.card-description {
+    font-size: 18px;
+    list-style: none;
+    line-height: 1.6;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    box-sizing: border-box; 
+}
+
+.card-item {
+    margin-bottom: 10px;
+}
+
+.card-highlighted{
+    border: 2px solid 	#4A4AFF;
+}
+
+
+/*插入卡片的icon無法自動縮小  導致卡片變大張*/
+.image-practice--container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Pricing section */
+.pricing {background-image: url('https://d2r4787i3zn8dn.cloudfront.net/site_images/images/033c62ab3ef144f2089dcffa3ad76488bbbc6eed.jpg?1572426758');
+    background-size: cover;
+    padding: 20px;
+    opacity:0.8;
+    
+}
+
+.pricing-title {
+    text-align: center;
+    color: #1A2B43;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.pricing-table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0 auto;
+    background-color: white;
+    border: 5px solid #4A4AFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+}
+
+.pricing-header{
+    background-color: #1D2A44;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border: 3px solid #4A4AFF;
+
+}
+
+.pricing-data {
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    border: 3px solid #4A4AFF;
+}
+
+.pricing-data-full {
+    color: #ff6f00;
+    font-weight: bold;
+}
+
+.pricing-data-open {
+    color: green;
+    font-weight: bold;
+}
+
+/* Coaches section */
+.coaches {
+    background-color: #1A2B43;
+    padding: 20px;
+    color: #07b4f8;
+}
+
+.coaches-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/*大視窗時  卡片水平排列失敗*/
+/*HTML 刪除一個 coaches-list,用一個包兩張卡片才能排列。 本來用兩個各自包一張卡，就各自排列。  */
+.coaches-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.coach-card {
+    background-color: white;
+    border: 5px solid #B0BEC5;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1280px) {
+    .coach-card {
+        width: 45%; /* 調整卡片寬度適應小螢幕 */
+    }
+}
+
+@media (max-width: 500px) {
+    .coach-card {
+        width: 90%; /* 調整卡片寬度適應小螢幕 */
+    }
+}
+
+.coach-card-image {
+    width: 100%;
+    border-radius: 8px;
+}
+.coach-card-name {
+    background-color: #ddd;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* 之後做 Hover 效果，隱藏卡片滑鼠懸停照片後滑出 */
+.coach-card-skills {
+    font-size: 16px;
+    list-style: none;
+    padding: 0;
+}
+
+.coach-card-skill {
+    margin-bottom: 10px;
+}
+
+
+.card__image-container img {
+        width: 100%;
+        height: 100%;        
+        object-fit: cover;
+        padding: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+}
+
+.hotel-facility {
+    background-color: #6699CC;
+    padding: 20px;
+}
+
+.hotel-title {
+    text-align: center;
+    font-size: 32px;
+    color: #1A2B43;
+    padding: 20px;
+}
+
+/*Q&A section*/
+
+.questioning {
+    background-color: #B8C3D8; /* 淺灰色背景 */
+    padding: 20px; /* 內邊距增加 */
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 添加陰影 */
+}
+
+.questions-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #1A2B43;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1A2B43;
+}
+
+/* Footer */
+.footer {
+    background-color:#1D2A44;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.footer-text {
+    font-size: 14px;
+}
