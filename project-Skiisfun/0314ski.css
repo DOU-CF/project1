@@ -1,0 +1,646 @@
+@keyframes fadeAndFlash {
+    0% {
+        opacity: 0; /* 開始時完全透明 */
+    }
+    50% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1; /* 結束時完全不透明 */
+    }
+}
+
+
+.header-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    opacity: 0; /* 初始透明度為 0 */
+    animation: fadeAndFlash 1.5s ease-in-out forwards;
+  
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #1A2B43;
+    font-family: SourceHanSans, sans-serif;
+}
+
+.header-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align:center;
+    color: #87ceeb;
+    line-height: 1.2;
+}
+
+.header-subtitle {
+    font-size: 24px;
+    font-style: italic;
+    color: gray;
+
+    margin-top: 5px;
+    line-height: 1.0;
+}
+
+/* 隱藏checkbox */
+#menu-toggle {
+    display: none;
+}
+
+/* 預設桌機平板選單顯示 */
+.desktop-menu {
+    display: block;
+    text-align: center;
+}
+
+
+/* Navbar Styles */
+.header-navbar {
+    display: flex;
+    flex-direction: row;/* 預設為水平方向排列 */
+    width: 100%; /* 確保佔滿整個父容器寬度 */
+    justify-content: center;
+}
+
+/* 預設導覽列樣式*/
+.navbar-list {
+    display: flex;
+    list-style: none;
+    justify-content: center; 
+    padding-inline-start: 0px;
+    
+}
+
+.mobile-navbar {
+    visibility: visible;
+    opacity: 0;
+}
+
+.mobile-navbar .navbar-list {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    left: 0;
+    /*     height: 200px; */
+    background-color: rgba(82, 90, 211, 0.9);
+    flex-direction: column;
+    gap: 10px;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+/*     z-index: 0;  */
+}
+
+.navbar-item {
+    font-size: 28px;
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.mobile-navbar .navbar-item {
+    text-align: center;
+}
+
+.mobile-navbar .navbar-link {
+    display: block;
+    padding: 10px 0;
+}
+
+.mobile-navbar .navbar-link:hover {
+    background-color: rgba(82, 90, 211, 0.8);  /* 滑鼠懸停時的背景顏色 */
+}
+
+
+
+/* 漢堡選單圖示:預設隱藏 */
+
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+    /* 原使用 z-index: 1000;  確保漢堡選單在故事區塊上方.
+    但可能是不必要的，過多的 z-index 會影響其他元素。*/
+    position: absolute;
+    right: 20px;
+    top: 35px;
+}
+
+.hamburger-menu .line {
+    display: block;
+    width: 100%;
+    height: 4px;
+   
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease; /* 添加過渡效果 */
+}
+
+/* Due to the design in 900px would be very crowded...
+so we need to adjust form 768px to 900px; */
+/* 手機螢幕寬度 <=900px */
+@media screen and (max-width: 900px) {
+     /*隱藏桌機版導覽列*/
+    .desktop-menu {
+        display:  none;
+    }
+
+    .mobile-navbar.nav-active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    
+     /*顯示漢堡選單圖示*/
+    .hamburger-menu {
+        display: flex; /*讓每個漢堡選單項目垂直排列*/
+            
+    }
+    
+    .navbar-list .active {
+            display: block; /* 顯示導航菜單 */
+            visibility: visible; /* 讓選單隱藏，但不影響 DOM 結構 */
+            opacity: 1;
+    }
+    
+
+    /* 選單開啟時，變 X */ 
+    #menu-toggle:checked + label .line:nth-child(1) {
+    transform: rotate (45deg);/* 第一條線變成對角線 */
+    position : absolute;
+    top: 10px;
+    }
+    
+    #menu-toggle:checked + label .line:nth-child(2) {
+    opacity: 0;/* 隱藏中間那條線 */
+    }
+    
+    #menu-toggle:checked + label .line:nth-child(3) {
+    transform: rotate(-45deg);
+    position: absolute;/* 第三條線變成對角線 */
+    top: 10px;
+    }
+
+/*   •	目前 #menu-toggle:checked 影響 .header-navbar .navbar-list，但 結構稍微變動就會壞掉。
+	•	建議用 label 來觸發變化，而不是完全依賴 :checked。 */
+    
+    /*當選單開啟時*/
+    #menu-toggle:checked ~ .header-navbar .mobile-navbar {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* 手機螢幕下，當漢堡圖示被點擊後，顯示導航選單 *//* .navbar-list 改成.mobile-navbar */
+    #menu-toggle:checked~ .hamburger-menu + .header-navbar .mobile-navbar {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    display: flex;/* 顯示導航選單 */
+    flex-direction: column;/* 垂直排列選項 */
+    background-color: rgba(82, 90, 211, 0.9);
+    gap: 10px;
+    padding: 10px;
+    }
+
+    .navbar-link {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        background-color: #4A90E2;
+        border-radius: 5PX;
+    }
+
+    .navbar-link:hover {
+        background-color: gray
+    }
+
+}
+
+.story{
+    background-image: url('https://pic1.zhimg.com/v2-1c0a6eadc663832aae33e2c2bf21f7e4_1440w.jpg?source=172ae18b');
+    background-size: cover;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.3); /* 半透明黑色背景 */
+    position: relative; /* 確保偽元素能夠正定位 */
+    color: white; /* 讓文字顏色更醒目 */ 
+    z-index: 1; /* 確保故事區塊位於下層 */
+}
+.story::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1; /* 確保遮罩層位於背景之上 */
+}
+
+.story-content {
+    z-index: 2; /* 確保文字顯示在遮罩層之上 */
+    position: relative; /* 確保文字層級在遮罩層上方 */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out 0.8s forward;
+
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform:  translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform:  translateY(0);
+    }
+}
+
+/* 文字樣式 */
+.story-headline {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2; /* 確保文字顯示在遮罩層之上 */
+    position: relative; /* 確保文字層級在遮罩層上方 */
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .header-title {
+        font-size: 30px;
+    }
+
+    .story-headline {
+        /*平板字型調整 */
+        font-size: 28px;
+        font-weight: lighter;
+    }
+    .story-item {
+        font-size: 20px;
+        font-weight: lighter;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .story-headline {
+        /* 手機上字型調整 */
+        font-size: 20px;
+
+    }
+    .story-item {
+        font-size: 18px;
+        font-weight:lighter;
+        line-height: 1.5;
+    }
+}
+
+.story-list {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.8;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+    z-index: 2; /* 確保文字顯示在遮罩層之上 */
+    position: relative; /* 確保文字層級在遮罩層上方 */
+
+
+
+}
+
+
+
+
+
+main {
+    background-color: #bfecff;
+    padding: 20px;
+}
+.main-section-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 10px 5px 5px #CECEFF;
+    padding: 20px;
+    text-align: center;
+    /* 設置行程卡片 的基本樣式 */
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: translateY(-10px) scale(1.05);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05); /* 卡片向上移動並放大 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* 加上陰影 */
+}
+
+.card-title {
+    font-size: 24px;
+    color: #333;
+}
+.card-description {
+    font-size: 18px;
+    list-style: none;
+    line-height: 1.6;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    box-sizing: border-box; 
+}
+
+.card-item {
+    margin-bottom: 10px;
+}
+
+.card-highlighted{
+    border: 2px solid 	#4A4AFF;
+}
+
+
+/*插入卡片的icon無法自動縮小  導致卡片變大張*/
+.image-practice--container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Pricing section */
+.pricing {background-image: url('https://d2r4787i3zn8dn.cloudfront.net/site_images/images/033c62ab3ef144f2089dcffa3ad76488bbbc6eed.jpg?1572426758');
+    background-size: cover;
+    padding: 20px;
+    opacity:0.8;
+    
+}
+
+.pricing-title {
+    text-align: center;
+    color: #1A2B43;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.pricing-table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0 auto;
+    background-color: white;
+    border: 5px solid #4A4AFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+}
+
+.pricing-header{
+    background-color: #1D2A44;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border: 3px solid #4A4AFF;
+
+}
+
+.pricing-data {
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    border: 3px solid #4A4AFF;
+}
+
+.pricing-data-full {
+    color: #ff6f00;
+    font-weight: bold;
+}
+
+.pricing-data-open {
+    color: green;
+    font-weight: bold;
+}
+
+/* Coaches section */
+.coaches {
+    background-color: #1A2B43;
+    padding: 20px;
+    color: #07b4f8;
+}
+
+.coaches-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/*大視窗時  卡片水平排列失敗*/
+/*HTML 刪除一個 coaches-list,用一個包兩張卡片才能排列。 本來用兩個各自包一張卡，就各自排列。  */
+.coaches-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.coach-card {
+    background-color: white;
+    border: 5px solid #B0BEC5;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;/* 需要設置 position才能讓  絕對定位 的card-hidden 顯示 */
+ 
+    transition: transform 0.3s ease-in-out; /* 增加懸停放大動畫 */
+}
+
+@media (max-width: 1280px) {
+    .coach-card {
+        width: 45%; /* 調整卡片寬度適應小螢幕 */
+    }
+}
+
+@media (max-width: 900px) {
+    .coach-card {
+        width: 90%; /* 調整卡片寬度適應小螢幕 */
+    }
+}
+
+.coach-card-image {
+    width: 100%;
+    height: 200px;/* 設定固定高度 */
+    object-fit: cover;/* 讓圖片覆蓋填滿容器，但保持比例 */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* 增加懸停效果 */
+}
+
+@Keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-10PX);
+    }
+    50% {
+        transform: translateY(0)
+
+    }
+}
+
+.coach-card-name {
+    background-color: #ddd;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: auto;
+}
+
+.coach-card-name:hover, .coach-card:hover {
+    animation: bounce 0.6s ease;
+}
+
+.coach-card {
+    background-color: white;
+    border: 5px solid #B0bec5;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;  /* 需要設置 position才能讓絕對定位的card-hidden顯示 */
+    transition: transform 0.3s ease-in -out;/* 增加懸停放大動畫 */
+    overflow: hidden;
+}
+
+.card__image-container img {
+    width: 100%;
+    height: 100%;        
+    object-fit: cover;
+    padding: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.coach-card-image:hover {
+    transform: scale(1.05); /*使圖片稍微放大*/
+}
+
+.coach-card:hover {
+    transform: scale(1.05); /*放大卡片*/
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* 增加陰影 */
+}
+
+
+
+/* 之後做 Hover 效果，隱藏卡片滑鼠懸停照片後滑出 */
+.skill-card {
+    position: absolute;
+    bottom: -100%;/* 初始位置隱藏在卡片下方 */
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color:  rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    transition: bottom 0.4 ease-out;
+    /* 滑動顯示效果 */
+}
+
+.coach-card:hover .skill-card {
+    transform: translateY(-100%);
+    bottom: 0; /* 點擊時，讓卡片從下方滑出 */
+
+}
+
+.coach-card-skills {
+    font-size: 16px;
+    list-style: none;
+    padding: 0;
+}
+
+.coach-card-skill {
+    margin-bottom: 10px;
+}
+
+
+
+.hotel-facility {
+    background-color: #6699CC;
+    padding: 20px;
+}
+
+.hotel-title {
+    text-align: center;
+    font-size: 32px;
+    color: #1A2B43;
+    padding: 20px;
+}
+
+/*Q&A section*/
+
+.questioning {
+    background-color: #B8C3D8; /* 淺灰色背景 */
+    padding: 20px; /* 內邊距增加 */
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 添加陰影 */
+}
+
+.questions-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #1A2B43;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1A2B43;
+}
+
+/* Footer */
+.footer {
+    background-color:#1D2A44;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+}
+
+.footer-text {
+    font-size: 14px;
+}
